@@ -15,6 +15,7 @@
     "transpile": "rollup -c"
   },
   "dependencies": {
+    "@yafu/fantasy-types": "^0.0.0",
     "fantasy-land": "^4.1.0"
   },
   "devDependencies": {

@@ -1,41 +1,37 @@
-import {
-  ap as AP,
-  chain as CHAIN,
-  extract as EXTRACT,
-  map as MAP,
-  of as OF,
-} from 'fantasy-land'
-
-export function identityOf (v) {
-  return new Identity(v) // eslint-disable-line no-use-before-define
+"use strict";
+exports.__esModule = true;
+exports.identityOf = void 0;
+var fantasy_land_1 = require("fantasy-land");
+// eslint-disable-next-line no-use-before-define
+function identityOf(v) {
+    // eslint-disable-next-line no-use-before-define
+    return new Identity(v);
 }
-
-export default class Identity {
-  static [OF] (v) {
-    return identityOf(v)
-  }
-
-  constructor (v) {
-    this.v = v
-  }
-
-  [MAP] (f) {
-    return identityOf(f(this.v))
-  }
-
-  [AP] (b) {
-    return identityOf(b.v(this.v))
-  }
-
-  [CHAIN] (f) {
-    return f(this.v)
-  }
-
-  [EXTRACT] () {
-    return this.v
-  }
-
-  toString () {
-    return `Identity[${this.v}]`
-  }
-}
+exports.identityOf = identityOf;
+var Identity = /** @class */ (function () {
+    function Identity(v) {
+        this.v = v;
+    }
+    Identity.prototype[(_a = fantasy_land_1.of, fantasy_land_1.map)] = function (f) {
+        return identityOf(f(this.v));
+    };
+    Identity.prototype[fantasy_land_1.ap] = function (b) {
+        return identityOf(b.v(this.v));
+    };
+    Identity.prototype[fantasy_land_1.chain] = function (f) {
+        return f(this.v);
+    };
+    Identity.prototype[fantasy_land_1.extend] = function (f) {
+        return identityOf(f(this));
+    };
+    Identity.prototype[fantasy_land_1.extract] = function () {
+        return this.v;
+    };
+    Identity.prototype.toString = function () {
+        return "Identity[" + this.v + "]";
+    };
+    var _a;
+    Identity[_a] = identityOf;
+    return Identity;
+}());
+exports["default"] = Identity;
