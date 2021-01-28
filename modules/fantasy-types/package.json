@@ -1,0 +1,14 @@
+{
+  "name": "@yafu/fantasy-types",
+  "version": "0.0.0",
+  "description": "TypeScript defenitions of fantasy-land types",
+  "license": "MIT",
+  "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
+  "main": "types.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "fantasy-land": "^5.0.0"
+  }
+}
