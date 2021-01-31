@@ -7,11 +7,9 @@ import {
   of as OF,
 } from 'fantasy-land'
 import {
-  Monad,
   Chain,
   Apply,
-  Comonad
-} from './hej'
+} from './types'
 
 // eslint-disable-next-line no-use-before-define
 export function identityOf <T> (v: T): Identity<T> {
