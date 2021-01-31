@@ -4,7 +4,8 @@
   "description": "Either monad",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "types": "dist/either.ts",
+  "main": "dist/either.js",
+  "types": "dist/either.d.ts",
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "eslint *.ts",
