@@ -1,5 +1,4 @@
 import curry from './curry'
-export default curry(_clamp)
 
 /**
   * The function enables selecting a middle value
@@ -11,8 +10,10 @@ export default curry(_clamp)
   * @arg v {Number} The value that needs to be clamped
   * @return {Number}
   */
-function _clamp (l, u, v) {
+function clamp (l: number, u: number, v: number): number {
   if (v > u) return u
   if (v < l) return l
   return v
 }
+
+export default curry(clamp)

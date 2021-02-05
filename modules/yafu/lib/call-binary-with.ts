@@ -8,8 +8,8 @@ import curry from './curry'
  * @arg y {any} The second agument to the binary function
  * @arg f {function} A unary function
  */
-function _callBinaryWith (x, y, f) {
+function callBinaryWith <A, B, C> (x: A, y: B, f: (a: A, b: B) => C) {
   return f(x, y)
 }
 
-export default curry(_callBinaryWith)
+export default curry(callBinaryWith)

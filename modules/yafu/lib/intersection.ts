@@ -1,8 +1,6 @@
 import curry from './curry'
-import _arrayToSet from './_arrayToSet'
-import _setToArray from './_setToArray'
-
-export default curry(_intersection)
+import arrayToSet from './_arrayToSet'
+import setToArray from './_setToArray'
 
 /**
  * Creates a new list of unique elements that are common to both lists using {@link http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero SameValueZero}
@@ -14,15 +12,15 @@ export default curry(_intersection)
  * @return {Array} The list of elements common to both list
  *
  */
-function _intersection (list1, list2) {
+function intersection <T> (list1: T[], list2: T[]): T[] {
   let listToIterate
   let lookupSet
   if (list1.length >= list2.length) {
     listToIterate = list2
-    lookupSet = _arrayToSet(list1)
+    lookupSet = arrayToSet(list1)
   } else {
     listToIterate = list1
-    lookupSet = _arrayToSet(list2)
+    lookupSet = arrayToSet(list2)
   }
 
   const out = new Set()
@@ -33,5 +31,7 @@ function _intersection (list1, list2) {
     }
   }
 
-  return _setToArray(out)
+  return setToArray(out)
 }
+
+export default curry(intersection)

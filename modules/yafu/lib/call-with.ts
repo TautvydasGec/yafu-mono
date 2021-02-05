@@ -1,7 +1,5 @@
 import curry from './curry'
 
-export default curry(_callWith)
-
 /**
  * Applies a unary function to the supplied argument.
  *
@@ -9,6 +7,8 @@ export default curry(_callWith)
  * @arg x {any} The agument to the unary function
  * @arg f {function} A unary function
  */
-function _callWith (x, f) {
+function callWith <A, B> (x: A, f: (a: A) => B) {
   return f(x)
 }
+
+export default curry(callWith)

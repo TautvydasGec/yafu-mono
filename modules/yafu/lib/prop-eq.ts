@@ -1,7 +1,5 @@
 import curry from './curry'
 
-export default curry(_propEq)
-
 /**
  * Returns true if the specified object property is strictly equal to the given value
  *
@@ -9,6 +7,9 @@ export default curry(_propEq)
  * @arg {*} val The value to look for
  * @arg {Object} o The object
  */
-function _propEq (name, val, o) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function propEq (name: string, val: any, o: Record<string, any>) {
   return o[name] === val
 }
+
+export default curry(propEq)

@@ -1,5 +1,5 @@
 import I from './i'
-import uniqBy from './uniq-by'
+import { uniqBy } from './uniq-by'
 
 /**
  * Returns a new list without duplicate elements.

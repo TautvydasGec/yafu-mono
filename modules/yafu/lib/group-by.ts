@@ -1,7 +1,5 @@
 import curry from './curry'
 
-export default curry(_groupBy)
-
 /**
  * Returns a new object that contains all elements of the list split into
  * separate sub list. The object keys and sub-lists are determined by calling
@@ -14,8 +12,8 @@ export default curry(_groupBy)
  * @arg {Array} list The list to values to group
  * @return {Object} An object with keys mapped to lists of elements.
  */
-function _groupBy (fn, list) {
-  const out = {}
+function groupBy <T> (fn: (a: T) => string, list: T[]): { [index: string]: T[] } {
+  const out: { [index: string]: T[] } = {}
   for (let i = 0; i < list.length; i++) {
     const item = list[i]
     const key = fn(item)
@@ -23,8 +21,10 @@ function _groupBy (fn, list) {
     if (group !== undefined) {
       group.push(item)
     } else {
-      out[key] = [item]
+      out[key] = [ item ]
     }
   }
   return out
 }
+
+export default curry(groupBy)

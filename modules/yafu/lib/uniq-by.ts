@@ -1,6 +1,10 @@
 import curry from './curry'
 
-export default curry(_uniqBy)
+type uniqBy1 = <A, B> (fn: (a: A) => B) => (list: A[]) => A[]
+
+type uniqBy2 = <A, B> (fn: (a: A) => B, list: A[]) => A[]
+
+type Tunb = uniqBy1 | uniqBy2
 
 /**
  * Returns a new list without duplicate elements. Uniqueness is determined by applying
@@ -14,7 +18,7 @@ export default curry(_uniqBy)
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-function _uniqBy (fn, list) {
+function uniqBy <A, B> (fn: (a: A) => B, list: A[]): A[] {
   const set = new Set()
   const out = []
   for (let i = 0; i < list.length; i++) {
@@ -26,4 +30,10 @@ function _uniqBy (fn, list) {
     }
   }
   return out
+}
+
+const unb: Tunb = curry(uniqBy)
+
+export {
+  unb
 }

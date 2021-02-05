@@ -1,5 +1,4 @@
 import curry from './curry'
-export default curry(_composeBinary)
 
 /**
  * Composes a binary function with a unary functon. The unary function will be
@@ -10,6 +9,8 @@ export default curry(_composeBinary)
  * @arg x {Any} The first value to pass to the binary function
  * @arg y {Any} The second value to pass to the binary function
  */
-function _composeBinary (f, g, x, y) {
+function composeBinary <A, B, C, D> (f: (c: C) => D, g: (a: A, b: B) => C, x: A, y: B) {
   return f(g(x, y))
 }
+
+export default curry(composeBinary)

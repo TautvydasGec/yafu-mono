@@ -3,6 +3,13 @@ module.exports = {
     mocha: true,
     node: true,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [ '.js', '.ts' ],
+      },
+    },
+  },
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
@@ -27,6 +34,14 @@ module.exports = {
     'arrow-body-style': 'warn',
     'arrow-parens': [ 'warn', 'always' ],
     'comma-dangle': [ 'warn', 'always-multiline' ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        ts: 'never',
+      },
+    ],
     'import/named': 'error',
     'import/no-extraneous-dependencies': [
       'warn',

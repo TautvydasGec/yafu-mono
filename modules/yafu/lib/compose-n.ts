@@ -11,10 +11,12 @@ export default curry(_composeN)
  * @arg g {Function} A function of length n
  * @arg args {Any} n number of arguments
  */
-function _composeN (n, f, g) {
+function composeN (n, f, g) {
   function composed (...args) {
     return f(g(...args))
   }
   Object.defineProperty(composed, 'length', { value: n })
   return composed
 }
+
+export default curry(composeN)

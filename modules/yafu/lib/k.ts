@@ -1,7 +1,5 @@
 import curry from './curry'
 
-export default curry(_K)
-
 /**
  * A binary function that returns its' first argument.
  *
@@ -9,6 +7,8 @@ export default curry(_K)
  * @arg y {any} The second value, will be ignored.
  *
  */
-function _K (x, y) {
+function K <A, B> (x: A, _y: B): A {
   return x
 }
+
+export default curry(K)

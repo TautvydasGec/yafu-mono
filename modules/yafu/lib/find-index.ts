@@ -1,5 +1,4 @@
 import curry from './curry'
-export default curry(_findIndex)
 
 /**
  * Returns the index of the first item in a list that matches a predicate.
@@ -8,7 +7,7 @@ export default curry(_findIndex)
  * @arg pred {function} A predicate function
  * @arg list {Array} The list to find the element in.
  */
-function _findIndex (pred, list) {
+function findIndex <T> (pred: (a: T) => boolean, list: T[]) {
   let i
   for (i = 0; i < list.length; i++) {
     if (pred(list[i])) {
@@ -17,3 +16,5 @@ function _findIndex (pred, list) {
   }
   return -1
 }
+
+export default curry(findIndex)

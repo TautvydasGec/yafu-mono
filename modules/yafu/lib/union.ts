@@ -1,7 +1,7 @@
 import composeBinary from './compose-binary'
 import uniq from './uniq'
 
-function concat (a, b) {
+function concat <A> (a: A[], b: A[]) {
   return a.concat(b)
 }
 

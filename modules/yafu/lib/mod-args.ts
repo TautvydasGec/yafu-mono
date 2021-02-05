@@ -1,5 +1,4 @@
 import curry from './curry'
-export default curry(_modArgs)
 
 /**
  * Call a binary function after the arguments have been modified
@@ -12,6 +11,14 @@ export default curry(_modArgs)
  * @arg x {any} The first agument to the binary function
  * @arg y {any} The second agument to the binary function
  */
-function _modArgs (f, g, h, x, y) {
+function modArgs <A, B, C, D, E> (
+  f: (c: C, d: D) => E,
+  g: (a: A) => C,
+  h: (b: B) => D,
+  x: A,
+  y: B,
+) {
   return f(g(x), h(y))
 }
+
+export default curry(modArgs)

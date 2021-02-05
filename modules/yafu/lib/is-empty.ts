@@ -1,12 +1,13 @@
 import curry from './curry'
 
-export default curry(_isEmpty)
-
 /**
  * Returns true if the list is empty.
  *
  * @arg list {Array} The list to check if it is empty or not.
  */
-function _isEmpty (list) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isEmpty (list: any[]): boolean {
   return list.length === 0
 }
+
+export default curry(isEmpty)
