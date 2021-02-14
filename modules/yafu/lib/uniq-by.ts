@@ -1,11 +1,5 @@
 import curry from './curry'
 
-type uniqBy1 = <A, B> (fn: (a: A) => B) => (list: A[]) => A[]
-
-type uniqBy2 = <A, B> (fn: (a: A) => B, list: A[]) => A[]
-
-type Tunb = uniqBy1 | uniqBy2
-
 /**
  * Returns a new list without duplicate elements. Uniqueness is determined by applying
  * the supplied function to each list element. If the supplied function produces
@@ -18,22 +12,19 @@ type Tunb = uniqBy1 | uniqBy2
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-function uniqBy <A, B> (fn: (a: A) => B, list: A[]): A[] {
-  const set = new Set()
-  const out = []
-  for (let i = 0; i < list.length; i++) {
-    const listItem = list[i]
-    const val = fn(listItem)
-    if (!set.has(val)) {
-      out.push(listItem)
-      set.add(val)
+function uniqBy <A, B> (fn: (a: A) => B, list?: A[]): A[] {
+  function run (l: A[]) {
+    const set = new Set()
+    const out = []
+    for (let i = 0; i < l.length; i++) {
+      const listItem = l[i]
+      const val = fn(listItem)
+      if (!set.has(val)) {
+        out.push(listItem)
+        set.add(val)
+      }
     }
+    return out
   }
-  return out
-}
-
-const unb: Tunb = curry(uniqBy)
-
-export {
-  unb
+  return list == null ? run : run(list)
 }
