@@ -1,7 +1,3 @@
-import curry from './curry'
-
-export default curry(_uniqBy)
-
 /**
  * Returns a new list without duplicate elements. Uniqueness is determined by applying
  * the supplied function to each list element. If the supplied function produces
@@ -14,7 +10,7 @@ export default curry(_uniqBy)
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-function _uniqBy (fn, list) {
+export default function uniqBy (fn, list) {
   const set = new Set()
   const out = []
   for (let i = 0; i < list.length; i++) {

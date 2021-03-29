@@ -1,9 +1,7 @@
-function _setToArray (set) {
+export default function setToArray (set) {
   const array = []
-  set.forEach(function (item) {
+  set.forEach((item) => {
     array.push(item)
   })
   return array
 }
-
-export default _setToArray

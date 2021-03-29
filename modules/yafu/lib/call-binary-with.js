@@ -1,5 +1,3 @@
-import curry from './curry'
-
 /**
  * Applies a binary function to the supplied arguments.
  *
@@ -8,8 +6,6 @@ import curry from './curry'
  * @arg y {any} The second agument to the binary function
  * @arg f {function} A unary function
  */
-function _callBinaryWith (x, y, f) {
+export default function callBinaryWith (x, y, f) {
   return f(x, y)
 }
-
-export default curry(_callBinaryWith)

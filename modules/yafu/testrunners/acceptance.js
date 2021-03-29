@@ -15,5 +15,5 @@ function getBundleFunction (bundle) {
   }
 }
 
-describe('yafu bundle', runTests(getBundleFunction(bundle)))
-describe('yafu bundle minified', runTests(getBundleFunction(minified)))
+describe('yafu bundle', runTests(getBundleFunction(bundle), true))
+describe('yafu bundle minified', runTests(getBundleFunction(minified), true))

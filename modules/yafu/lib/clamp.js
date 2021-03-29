@@ -1,6 +1,3 @@
-import curry from './curry'
-export default curry(_clamp)
-
 /**
   * The function enables selecting a middle value
   * within a range of values between a defined minimum and maximum.
@@ -11,7 +8,7 @@ export default curry(_clamp)
   * @arg v {Number} The value that needs to be clamped
   * @return {Number}
   */
-function _clamp (l, u, v) {
+export default function clamp (l, u, v) {
   if (v > u) return u
   if (v < l) return l
   return v

@@ -9,6 +9,4 @@ import uniqBy from './uniq-by'
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-const uniq = uniqBy(I)
-
-export default uniq
+export default uniqBy(I)
