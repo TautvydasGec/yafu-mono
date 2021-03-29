@@ -1,6 +1,3 @@
-import curry from './curry.js'
-export default curry(_compose)
-
 /**
  * Compose two functions passing the result from the second one to the first one.
  *
@@ -9,6 +6,6 @@ export default curry(_compose)
  * @arg g {function} The function that will be apply `x` and pass the result to `f`
  * @arg x {any} The value to pass to `g`
  */
-function _compose (f, g, x) {
+export default function compose (f, g, x) {
   return f(g(x))
 }

@@ -1,7 +1,3 @@
-import curry from './curry.js'
-
-export default curry(_reduce)
-
 /**
  * Reduces a list of values to a single value by passing each value to
  * a binary accumulator function along with the result of the previous iteration.
@@ -11,9 +7,9 @@ export default curry(_reduce)
  * @arg list {array} The array to reduce.
  *
  */
-function _reduce (f, x, list) {
-  var i
-  var acc = x
+export default function reduce (f, x, list) {
+  let i
+  let acc = x
   for (i = 0; i < list.length; ++i) {
     acc = f(acc, list[i])
   }

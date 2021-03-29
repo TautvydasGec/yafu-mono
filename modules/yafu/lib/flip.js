@@ -1,7 +1,3 @@
-import curry from './curry.js'
-
-export default curry(_flip)
-
 /**
  * Calls a function after flippng the order of the first two arguments
  *
@@ -10,6 +6,6 @@ export default curry(_flip)
  * @arg y {any} The first argument to pass to the function.
  *
  */
-function _flip (f, x, y) {
+export default function flip (f, x, y) {
   return f(y, x)
 }

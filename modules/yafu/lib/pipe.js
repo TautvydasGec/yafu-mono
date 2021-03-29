@@ -10,6 +10,4 @@ import reduce from './reduce.js'
  * @arg x {any} The initial value, will be passed to the first function in the list.
  *
  */
-const pipe = flip(reduce(callWith))
-
-export default pipe
+export default flip(reduce(callWith))

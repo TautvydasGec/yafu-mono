@@ -15,6 +15,4 @@ function concat (a, b) {
  * @return {Array} A new list of unique elements
  *
  */
-const union = composeBinary(uniq, concat)
-
-export default union
+export default composeBinary(uniq, concat)
