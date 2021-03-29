@@ -1,14 +1,20 @@
+import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 import curry from '@yafu/rollup-plugin-curry'
 
-export default {
+export default [ {
   input: 'lib/index.js',
+  external: [ '@yafu/curry' ],
   plugins: [ curry() ],
-  output: [ {
+  output: {
     file: 'dist/es/yafu.js',
     format: 'es',
     sourcemap: true,
-  }, {
+  },
+}, {
+  input: 'lib/index.js',
+  plugins: [ resolve(), curry() ],
+  output: [ {
     file: 'dist/umd/yafu.js',
     format: 'umd',
     name: 'yafu',
@@ -20,4 +26,4 @@ export default {
     plugins: [ terser() ],
     sourcemap: true,
   } ],
-}
+} ]
