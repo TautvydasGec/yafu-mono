@@ -23,10 +23,11 @@
     "prebundle": "node build/create-index",
     "bundle": "yarn clean && rollup -c",
     "clean": "rm -rf dist",
+    "cleanIndex": "rm -rf lib/index.ts",
     "jsdoc": "jsdoc -c jsdoc.json lib",
     "prepublishOnly": "yarn clean && yarn run bundle && yarn run acceptance",
-    "postpublish": "rm lib/index.js",
-    "test": "yarn unit && yarn bundle && yarn acceptance && rm lib/index.js",
+    "postpublish": "yarn cleanIndex",
+    "test": "yarn bundle && yarn unit && yarn acceptance && yarn cleanIndex",
     "unit": "mocha testrunners/unit"
   },
   "dependencies": {

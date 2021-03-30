@@ -1,19 +1,20 @@
 import resolve from '@rollup/plugin-node-resolve'
+import typescript2 from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
 import curry from '@yafu/rollup-plugin-curry'
 
 export default [ {
-  input: 'lib/index.js',
+  input: 'lib/index.ts',
   external: [ '@yafu/curry' ],
-  plugins: [ curry() ],
+  plugins: [ typescript2(), curry() ],
   output: {
     file: 'dist/es/yafu.js',
     format: 'es',
     sourcemap: true,
   },
 }, {
-  input: 'lib/index.js',
-  plugins: [ resolve(), curry() ],
+  input: 'lib/index.ts',
+  plugins: [ resolve(), typescript2(), curry() ],
   output: [ {
     file: 'dist/umd/yafu.js',
     format: 'umd',
