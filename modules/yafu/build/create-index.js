@@ -19,7 +19,7 @@ function createIndex (projectPath) {
   }
 
   const jsFiles = readdirSync(getAbsolute('lib'))
-    .filter((s) => basename(s).indexOf('_') !== 0 && s !== 'index.js')
+    .filter((s) => basename(s).indexOf('_') !== 0 && s !== 'index.ts')
 
   const varNames = jsFiles
     .map(getFileBaseName)
@@ -32,7 +32,7 @@ function createIndex (projectPath) {
   }).join('\n')
 
   mkdirpSync('dist')
-  writeFileSync(getAbsolute('dist/index.js'), imports)
+  writeFileSync(getAbsolute('dist/index.ts'), imports)
 }
 
 createIndex(process.cwd())
