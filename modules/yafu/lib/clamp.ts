@@ -8,7 +8,7 @@
   * @arg v {Number} The value that needs to be clamped
   * @return {Number}
   */
-export default function clamp (l, u, v) {
+export default function clamp (l: number, u: number, v: number): number {
   if (v > u) return u
   if (v < l) return l
   return v
