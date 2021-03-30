@@ -10,7 +10,7 @@
  * @arg {Array} list The list to values to group
  * @return {Object} An object with keys mapped to lists of elements.
  */
-export default function groupBy (fn, list) {
+export default function groupBy <T> (fn: (a: T) => string, list: T[]): { [index: string]: T[] } {
   const out = {}
   for (let i = 0; i < list.length; i++) {
     const item = list[i]

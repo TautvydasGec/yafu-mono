@@ -10,7 +10,7 @@
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-export default function uniqBy (fn, list) {
+export default function run (l: A[]) {
   const set = new Set()
   const out = []
   for (let i = 0; i < list.length; i++) {

@@ -5,6 +5,6 @@
  * @arg {*} val The value to look for
  * @arg {Object} o The object
  */
-export default function propEq (name, val, o) {
+export default function propEq (name: string, val: any, o: Record<string, any>) {
   return o[name] === val
 }
