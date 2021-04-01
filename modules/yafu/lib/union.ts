@@ -1,9 +1,4 @@
-import composeBinary from './compose-binary.js'
-import uniq from './uniq.js'
-
-function concat (a, b) {
-  return a.concat(b)
-}
+import { uniq } from '../dist/uniq'
 
 /**
  * Returns a list of unique values composed of elements from each input list using
@@ -15,4 +10,6 @@ function concat (a, b) {
  * @return {Array} A new list of unique elements
  *
  */
-export default composeBinary(uniq, concat)
+export function union <A>(x: A[], y: A[]): A[] {
+  return uniq(x.concat(y))
+}
