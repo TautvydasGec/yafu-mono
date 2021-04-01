@@ -5,6 +5,6 @@
  * @arg y {any} The second value, will be ignored.
  *
  */
-export default function K <A, B> (x: A, _y: B): A {
+export function K <A, B> (x: A, _y: B): A {
   return x
 }

@@ -20,14 +20,12 @@
   ],
   "scripts": {
     "acceptance": "mocha testrunners/acceptance",
-    "prebundle": "node build/create-index",
-    "bundle": "yarn clean && rollup -c",
+    "prebundle": "yarn clean && mkdir dist",
+    "bundle": "node build/create-index && rollup -c",
     "clean": "rm -rf dist",
-    "cleanIndex": "rm -rf lib/index.ts",
     "jsdoc": "jsdoc -c jsdoc.json lib",
     "prepublishOnly": "yarn clean && yarn run bundle && yarn run acceptance",
-    "postpublish": "yarn cleanIndex",
-    "test": "yarn bundle && yarn unit && yarn acceptance && yarn cleanIndex",
+    "test": "yarn bundle && yarn unit && yarn acceptance",
     "unit": "mocha testrunners/unit"
   },
   "dependencies": {
@@ -44,6 +42,7 @@
     "babel-plugin-add-module-exports": "^1.0.4",
     "camel-case": "^4.1.1",
     "chai": "^4.3.4",
+    "glob": "^7.1.6",
     "jsdoc": "^3.6.4",
     "mocha": "^8.3.2",
     "rollup": "^2.44.0",

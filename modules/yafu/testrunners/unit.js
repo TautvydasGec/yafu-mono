@@ -1,5 +1,5 @@
 import { camelCase } from 'camel-case'
-import * as yafu from '../dist/es/yafu'
+import * as yafu from '../dist'
 import runTests from './run-tests'
 
 function getFunction (fileName) {

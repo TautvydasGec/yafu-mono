@@ -7,7 +7,7 @@
  * @arg g {Function} A function of length n
  * @arg args {Any} n number of arguments
  */
-export default function composeN (n, f, g) {
+export function composeN (n, f, g) {
   function composed (...args) {
     return f(g(...args))
   }

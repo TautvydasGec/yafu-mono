@@ -1,5 +1,5 @@
-import I from './i'
-import uniqBy from './uniq-by'
+import { I } from '../dist/i'
+import { uniqBy } from '../dist/uniq-by'
 
 /**
  * Returns a new list without duplicate elements.
@@ -9,4 +9,4 @@ import uniqBy from './uniq-by'
  * @arg {Array} list The list to inspect
  * @return {Array} A new list of unique elements
  */
-export default uniqBy(I)
+export const uniq = uniqBy(I)

@@ -1,6 +1,6 @@
-import callWith from './call-with'
-import flip from './flip'
-import reduce from './reduce'
+import { callWith } from '../dist/call-with'
+import { flip } from '../dist/flip'
+import { reduce } from '../dist/reduce'
 
 /**
  * Pass a value through a list of function where the result of each
@@ -10,4 +10,4 @@ import reduce from './reduce'
  * @arg x {any} The initial value, will be passed to the first function in the list.
  *
  */
-export default flip(reduce(callWith))
+export const pipe = flip(reduce(callWith))

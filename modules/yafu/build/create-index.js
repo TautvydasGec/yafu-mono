@@ -3,9 +3,8 @@ const {
   basename,
   extname,
   join,
-  normalize
+  normalize,
 } = require('path')
-const { camelCase } = require('camel-case')
 
 function createIndex (projectPath) {
   function getFileBaseName (fullName) {
@@ -18,19 +17,15 @@ function createIndex (projectPath) {
   }
 
   const jsFiles = readdirSync(getAbsolute('lib'))
-    .filter((s) => getFileBaseName(s).indexOf('_') !== 0 && s !== 'index.ts')
-
-  const varNames = jsFiles
     .map(getFileBaseName)
-    .map((s) => s.length === 1 ? s.toUpperCase() : camelCase(s))
+    .filter((s) => s.indexOf('_') !== 0)
 
-  const imports = jsFiles.map((item, i) => {
-    const pathName = `./${getFileBaseName(item)}`
-    const varName = varNames[i]
-    return `export { default as ${varName} } from '${pathName}'`
+  const imports = jsFiles.map((item) => {
+    const pathName = `./${item}`
+    return `export * from '${pathName}'`
   }).join('\n')
 
-  writeFileSync(getAbsolute('lib/index.ts'), imports)
+  writeFileSync(getAbsolute('dist/index.js'), imports)
 }
 
 createIndex(process.cwd())
