@@ -1,6 +1,6 @@
 import { I } from '../dist/i'
 
-module.exports = (uniqBy) => () => {
+export default (uniqBy) => () => {
   it('returns empty list for empty input', () => {
     uniqBy(I, []).should.deep.equal([])
   })

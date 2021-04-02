@@ -1,9 +1,7 @@
-module.exports = function (flip) {
-  return function () {
-    const strConcat = (a, b) => a + b
+export default (flip) => () => {
+  const strConcat = (a, b) => a + b
 
-    it('flips the arguments to the passed in function', function () {
-      flip(strConcat, 'foo', 'bar').should.equal('barfoo')
-    })
-  }
+  it('flips the arguments to the passed in function', () => {
+    flip(strConcat, 'foo', 'bar').should.equal('barfoo')
+  })
 }

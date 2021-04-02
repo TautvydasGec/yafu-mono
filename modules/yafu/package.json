@@ -25,6 +25,7 @@
     "clean": "rm -rf dist",
     "jsdoc": "jsdoc -c jsdoc.json lib",
     "prepublishOnly": "yarn clean && yarn run bundle && yarn run acceptance",
+    "pretest": "node build/create-test-index",
     "test": "yarn bundle && yarn unit && yarn acceptance",
     "unit": "mocha testrunners/unit"
   },

@@ -1,12 +1,7 @@
-const chai = require('chai')
+import chai from 'chai'
+import * as tests from '../test'
 
 chai.should()
-
-const fs = require('fs')
-
-const testFolder = fs.readdirSync('./test')
-const ignoreFiles = [ '__tests-setup.js', 'mocha.opts' ]
-const testFiles = testFolder.filter((f) => ignoreFiles.indexOf(f) === -1)
 
 function shouldBeCurried (name, fn) {
   return name !== 'curry' && typeof fn === 'function'
@@ -14,9 +9,7 @@ function shouldBeCurried (name, fn) {
 
 export default function runTests (getTestSubject, testCurry = false) {
   return () => {
-    testFiles.forEach((f) => {
-      const name = f.split('.')[0]
-      const test = require(`../test/${f}`)
+    Object.entries(tests).forEach(([ name, test ]) => {
       const fn = getTestSubject(name)
       describe(name, () => {
         if (testCurry && shouldBeCurried(name, fn)) {

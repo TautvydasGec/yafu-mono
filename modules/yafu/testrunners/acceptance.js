@@ -1,5 +1,5 @@
-import runTests from './run-tests'
 import { camelCase } from 'camel-case'
+import runTests from './run-tests'
 
 const bundle = require('../dist/umd/yafu')
 const minified = require('../dist/umd/yafu.min')
@@ -8,10 +8,10 @@ function upperFirst (string) {
   return string[0].toUpperCase() + string.substring(1)
 }
 
-function getBundleFunction (bundle) {
-  return function (name) {
+function getBundleFunction (b) {
+  return (name) => {
     const camelCaseName = camelCase(name)
-    return bundle[camelCaseName] || bundle[upperFirst(camelCaseName)]
+    return b[camelCaseName] || b[upperFirst(camelCaseName)]
   }
 }
 
