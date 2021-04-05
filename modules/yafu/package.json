@@ -27,6 +27,7 @@
     "prepublishOnly": "yarn clean && yarn run bundle && yarn run acceptance",
     "pretest": "node build/create-test-index",
     "test": "yarn bundle && yarn unit && yarn acceptance",
+    "posttest": "rm -f test/index.js",
     "unit": "mocha testrunners/unit"
   },
   "dependencies": {
