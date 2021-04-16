@@ -1,24 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve'
-import typescript2 from 'rollup-plugin-typescript2'
-
 import pkg from './package.json'
+import createRollupConfig from '../../create-rollup-config.js'
 
-const { main, exports: { import: esFile } } = pkg
-
-export default {
-  input: './const.ts',
-  treeshake: {
-    moduleSideEffects: false,
-  },
-  plugins: [
-    resolve(),
-    typescript2(),
-  ],
-  output: [ {
-    file: esFile,
-    format: 'es',
-  }, {
-    file: main,
-    format: 'cjs',
-  } ],
-}
+export default createRollupConfig('./const.ts', pkg)

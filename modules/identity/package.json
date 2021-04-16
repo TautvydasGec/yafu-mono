@@ -4,10 +4,10 @@
   "description": "Identity monad",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "main": "dist/identity.js",
+  "main": "dist/cjs/identity.js",
   "exports": {
-    "import": "./identity.js",
-    "require": "./dist/identity.js"
+    "import": "./dist/es/identity.js",
+    "require": "./dist/es/identity.js"
   },
   "type": "module",
   "scripts": {

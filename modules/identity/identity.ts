@@ -6,36 +6,38 @@ import {
   of as OF,
 } from 'fantasy-land'
 
-export function identityOf (v) {
+export function identityOf <T> (v: T): Identity<T> {
   return new Identity(v) // eslint-disable-line no-use-before-define
 }
 
-export default class Identity {
-  static [OF] (v) {
+export default class Identity<T> {
+  static [OF] <T> (v: T): Identity<T> {
     return identityOf(v)
   }
 
-  constructor (v) {
+  v: T
+
+  constructor (v: T) {
     this.v = v
   }
 
-  [MAP] (f) {
+  [MAP] <U> (f: (a: T) => U): Identity<U> {
     return identityOf(f(this.v))
   }
 
-  [AP] (b) {
+  [AP] <U> (b: Identity<(a: T) => U>): Identity<U> {
     return identityOf(b.v(this.v))
   }
 
-  [CHAIN] (f) {
+  [CHAIN] <U> (f: (a: T) => Identity<U>): Identity<U> {
     return f(this.v)
   }
 
-  [EXTRACT] () {
+  [EXTRACT] (): T {
     return this.v
   }
 
-  toString () {
+  toString (): string {
     return `Identity[${this.v}]`
   }
 }

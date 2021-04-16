@@ -1,15 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve'
+import pkg from './package.json'
+import createRollupConfig from '../../create-rollup-config.js'
 
-export default {
-  input: './identity.js',
-  treeshake: {
-    moduleSideEffects: false,
-  },
-  plugins: [
-    resolve(),
-  ],
-  output: {
-    file: 'dist/identity.js',
-    format: 'cjs',
-  },
-}
+export default createRollupConfig('./identity.ts', pkg)
