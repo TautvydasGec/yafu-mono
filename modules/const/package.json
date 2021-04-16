@@ -4,10 +4,10 @@
   "description": "Const monad",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "main": "dist/const.js",
+  "main": "dist/cjs/const.js",
   "exports": {
-    "import": "./const.js",
-    "require": "./dist/const.js"
+    "import": "./dist/es/const.js",
+    "require": "./dist/cjs/const.js"
   },
   "type": "module",
   "scripts": {
@@ -23,7 +23,9 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.2.1",
     "eslint": "^7.23.0",
-    "rollup": "^2.44.0"
+    "rollup": "^2.44.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.2.4"
   },
   "publishConfig": {
     "access": "public"
