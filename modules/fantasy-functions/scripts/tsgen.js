@@ -54,11 +54,33 @@ const allDefs = Object.entries(definitions).map(([ fn, spec ]) => {
   const methodGenerics = methodGenericsList.length ? `<${methodGenericsList.join(', ')}>` : ''
   const extendWithGenerics = extending.map((item) => `${item}${extendingGenerics}`)
 
-  const method = `[FL.${fn}]: ${methodGenerics}(${args.map(formatArgument).join(', ')})`
+  const needsHigherKind = returnType.startsWith(name)
+
+  const method = `[${fn}]: ${methodGenerics}(${args.map(formatArgument).join(', ')})`
   const extendStatement = extending.length ? ` extends ${extendWithGenerics.join(', ')}` : ''
-  return `export interface ${name}${generics}${extendStatement} {
-  ${method} => ${returnType}\n}\n`
+  const lines = [
+    `export interface ${name}${generics}${extendStatement} {`,
+    `  ${method} => ${returnType}`,
+    '}',
+  ]
+
+  if (needsHigherKind) {
+    lines.splice(1, 0, '  hkt: HKT')
+  }
+
+  return lines.join('\n')
 })
 
-process.stdout.write("import * as FL from 'fantasy-land'\n\n")
-process.stdout.write(allDefs.join('\n'))
+process.stdout.write('import {\n')
+Object.keys(definitions).forEach((fn) => {
+  process.stdout.write(`  ${fn},\n`)
+})
+process.stdout.write("} from 'fantasy-land'\n")
+process.stdout.write(`
+interface HKT {
+  input: unknown,
+  output: unknown,
+}
+
+`)
+process.stdout.write(allDefs.join('\n\n'))
