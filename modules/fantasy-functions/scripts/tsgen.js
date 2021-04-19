@@ -1,4 +1,4 @@
-const definitions = require('../dist/cjs/definitions') // eslint-disable-line
+import definitions from '../lib/definitions.js'
 
 const parameterNames = [ 'a', 'b', 'c' ]
 const innerParameterNames = [ 'x', 'y', 'z' ]

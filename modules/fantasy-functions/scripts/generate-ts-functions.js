@@ -80,7 +80,8 @@ function hmm (d) {
   const mainType = `T extends ${name}${createGenerics(generics.map(getAny))}`
 
   const returnGenerics = returnType.match(genericxRegexp) || []
-  const allGenerics = [ mainType, ...returnGenerics ]
+  const uniqueReturnGenerics = returnGenerics.filter((g) => generics.indexOf(g) === -1)
+  const allGenerics = [ mainType, ...uniqueReturnGenerics ]
 
   return createGenerics(allGenerics)
 }
@@ -88,8 +89,9 @@ function hmm (d) {
 function create (functionName, d) {
   const { name, returnType } = d
 
+  const returnGenerics = returnType.match(genericxRegexp) || []
   const actualReturnType = returnType.startsWith(name)
-    ? "CallHKT<T['hkt'], U>"
+    ? `CallHKT<T['hkt'], ${returnGenerics.join(', ')}>`
     : returnType
 
   return `export function ${functionName} ${hmm(d)} (${generateParameters(d)}): ${actualReturnType} {
@@ -98,9 +100,26 @@ function create (functionName, d) {
   `
 }
 
+process.stdout.write('import {\n')
+Object.keys(definitions).forEach((fn) => {
+  process.stdout.write(`  ${fn} as ${fn.toUpperCase()},\n`)
+})
+process.stdout.write("} from 'fantasy-land'\n")
+
+process.stdout.write('import {\n')
+Object.values(definitions)
+  .forEach((d) => {
+    const { name } = d
+    process.stdout.write(`  ${name},\n`)
+  })
+process.stdout.write('  HKT,\n')
+process.stdout.write("} from './types'\n\n")
+
+process.stdout.write("type CallHKT<F extends HKT, I> = (F & { input: I })['output']\n\n")
+
 Object.entries(definitions)
-  // .filter(([ fn ]) => fn === 'ap')
+  .filter(([ fn ]) => !new Set([ 'traverse', 'promap', 'bimap' ]).has(fn))
   .forEach(([ functionName, definition ]) => {
     process.stdout.write(create(functionName, definition))
-    process.stdout.write('\n\n')
+    process.stdout.write('\n')
   })

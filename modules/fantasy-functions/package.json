@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "exports": "./dist/es6/fantasy-functions.js",
+  "exports": "./dist/ts/fantasy-functions.js",
   "type": "module",
   "files": [
     "lib",
@@ -16,8 +16,8 @@
     "lint": "eslint lib test *.js",
     "prepublishOnly": "yarn clean && yarn transpile",
     "test": "yarn lint && yarn unit",
-    "tsgen": "node scripts/tsgen > dist/types.d.ts",
-    "transpile": "node scripts/generate-module.js && rollup -c && yarn tsgen",
+    "tsgen": "mkdir -p dist/ts && node scripts/tsgen > dist/ts/types.d.ts & node scripts/generate-ts-functions.js > dist/ts/fantasy-functions.ts",
+    "transpile": "node scripts/generate-module.js && yarn tsgen && rollup -c",
     "unit": "mocha"
   },
   "dependencies": {
@@ -36,7 +36,8 @@
     "eslint": "^7.23.0",
     "mocha": "^8.3.2",
     "rollup": "^2.44.0",
-    "rollup-plugin-replace": "^2.2.0"
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.30.0"
   },
   "publishConfig": {
     "access": "public"
