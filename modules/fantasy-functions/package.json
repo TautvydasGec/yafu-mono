@@ -16,7 +16,7 @@
     "lint": "eslint lib test *.js",
     "prepublishOnly": "yarn clean && yarn transpile",
     "test": "yarn lint && yarn unit",
-    "tsgen": "mkdir -p dist/ts && node scripts/tsgen > dist/ts/types.d.ts & node scripts/generate-ts-functions.js > dist/ts/fantasy-functions.ts",
+    "tsgen": "mkdir -p dist/ts && node scripts/tsgen > dist/ts/types.d.ts && node scripts/generate-ts-functions.js > dist/ts/fantasy-functions.ts",
     "transpile": "node scripts/generate-module.js && yarn tsgen && rollup -c",
     "unit": "mocha"
   },
