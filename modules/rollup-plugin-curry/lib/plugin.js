@@ -1,5 +1,5 @@
-import curryDefinition from './curry-definition'
-import curryCode from './curry-code'
+import curryDefinition from './curry-definition.js'
+import curryCode from './curry-code.js'
 
 export default function plugin () {
   return {
