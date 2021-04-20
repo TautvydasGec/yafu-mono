@@ -3,20 +3,13 @@ module.exports = {
     mocha: true,
     node: true,
   },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: [ '.js', '.ts' ],
-      },
-    },
+  plugins: [ 'import' ],
+  rules: {
+    'no-multiple-empty-lines': [ 'warn', { max: 1, maxBOF: 0, maxEOF: 0 } ],
+    indent: [ 'warn', 2 ],
   },
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-    'import',
-  ],
   overrides: [ {
-    files: [ '*.js', '*.jsx' ],
+    files: [ '*.js' ],
     extends: [
       'airbnb-base',
       'eslint:recommended',
@@ -26,6 +19,7 @@ module.exports = {
       'arrow-body-style': 'warn',
       'arrow-parens': [ 'warn', 'always' ],
       'comma-dangle': [ 'warn', 'always-multiline' ],
+      'import/extensions': [ 'error', 'always' ],
       'import/named': 'error',
       'import/no-extraneous-dependencies': [
         'warn',
@@ -39,12 +33,8 @@ module.exports = {
         },
       ],
       'import/prefer-default-export': 'off',
-      indent: [
-        'warn',
-        2,
-      ],
+      indent: [ 'warn', 2 ],
       'new-cap': 0,
-      'no-multiple-empty-lines': [ 'warn', { max: 1, maxBOF: 0, maxEOF: 0 } ],
       'no-nested-ternary': 'off',
       'no-plusplus': 'off',
       'no-unexpected-multiline': 'error',
@@ -52,6 +42,15 @@ module.exports = {
       'space-before-function-paren': [ 'warn', 'always' ],
     },
   }, {
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: [ '.js', '.ts' ],
+        },
+      },
+    },
+    parser: '@typescript-eslint/parser',
+    plugins: [ '@typescript-eslint' ],
     files: [ '*.ts', '*.tsx' ],
     extends: [
       'plugin:@typescript-eslint/eslint-recommended',
@@ -65,6 +64,7 @@ module.exports = {
         ignoreRestSiblings: false,
         vars: 'all',
       } ],
+      'import/extensions': [ 'warn', 'never' ],
     },
   } ],
 }
