@@ -6,27 +6,32 @@ import curry from '@yafu/rollup-plugin-curry'
 import sortDependencies from './build/sort-dependencies.js'
 
 const { sync: glob } = globPkg
-
-const files = glob('lib/*')
-const fileGroups = sortDependencies({
+const tsFiles = glob('lib/*.ts')
+const jsFiles = glob('lib/*.js')
+const tsFileGroups = sortDependencies({
   distFolderPath: 'dist',
-  files,
+  files: tsFiles,
   group: true,
 })
 
-const initial = fileGroups.map((input) => ({
-  input,
-  external: () => true,
-  plugins: [ typescript2(), curry() ],
-  output: {
-    dir: 'dist',
-    format: 'es',
-    sourcemap: true,
-  },
-}))
+function transpileFiles (plugins, input) {
+  return {
+    input,
+    external: () => true,
+    plugins,
+    output: {
+      dir: 'dist',
+      format: 'es',
+      sourcemap: true,
+    },
+  }
+}
+
+const tsTranspilations = tsFileGroups.map((input) => transpileFiles([ typescript2(), curry() ], input))
 
 export default [
-  ...initial,
+  ...tsTranspilations,
+  transpileFiles([ curry() ], jsFiles),
   {
     input: 'dist/index.js',
     plugins: [ resolve() ],
