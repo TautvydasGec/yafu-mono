@@ -1,9 +1,11 @@
 import resolve from '@rollup/plugin-node-resolve'
 import typescript2 from 'rollup-plugin-typescript2'
-import { sync as glob } from 'glob'
+import globPkg from 'glob'
 import { terser } from 'rollup-plugin-terser'
 import curry from '@yafu/rollup-plugin-curry'
 import sortDependencies from './build/sort-dependencies.js'
+
+const { sync: glob } = globPkg
 
 const files = glob('lib/*')
 const fileGroups = sortDependencies({

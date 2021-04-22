@@ -30,8 +30,6 @@
     "prepublishOnly": "yarn clean && yarn run transpile",
     "pretest": "node build/create-index && node build/create-test-index",
     "test": "yarn unit && rm -f test/index.js",
-    "clean": "rm -rf dist",
-    "jsdoc": "jsdoc -c jsdoc.json lib",
     "unit": "mocha testrunners/unit"
   },
   "dependencies": {
@@ -54,6 +52,7 @@
     "mocha": "^8.3.2",
     "rollup": "^2.44.0",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
     "source-map-support": "^0.5.16",
     "yaml": "^1.10.2"
   },

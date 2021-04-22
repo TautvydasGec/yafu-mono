@@ -22,12 +22,12 @@ function createIndex (projectPath) {
     .filter((s) => s.indexOf('_') !== 0)
 
   const imports = jsFiles.map((item) => {
-    const pathName = `../lib/${item}`
+    const pathName = `./${item}.js`
     return `export * from '${pathName}'`
   }).join('\n')
 
   mkdirpSync('dist')
-  writeFileSync(getAbsolute('dist/index.ts'), imports)
+  writeFileSync(getAbsolute('dist/index.js'), imports)
 }
 
 createIndex(process.cwd())
