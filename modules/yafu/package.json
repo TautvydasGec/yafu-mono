@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "author": "Ludwig Magnusson",
-  "main": "./dist/umd/yafu",
+  "main": "./dist/index.js",
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/umd/yafu.js"
