@@ -1,7 +1,7 @@
 import * as FL from 'fantasy-land'
+import * as definitions from '@yafu/fantasy-types/definitions'
 import { I, composeN } from 'yafu'
 import isSameType from './is-same-type.js'
-import definitions from './definitions.js'
 
 function clearGeneric (string) {
   return string.replace(/<\w+>/, '')

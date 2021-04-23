@@ -9,7 +9,7 @@ function generate (name, path) {
   ))
 
   return [
-    "import definitions from '../../lib/definitions.js'",
+    "import * as definitions from '@yafu/fantasy-types/definitions'",
     `import ${name} from '../../lib/${path}'`,
     '',
     ...lines,

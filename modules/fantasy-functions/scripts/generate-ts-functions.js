@@ -1,4 +1,4 @@
-import definitions from '../lib/definitions.js'
+import * as definitions from '@yafu/fantasy-types/definitions'
 import { createGenerics } from './utils.js'
 
 const parameterNames = 'abc'
@@ -113,7 +113,7 @@ Object.values(definitions)
     process.stdout.write(`  ${name},\n`)
   })
 process.stdout.write('  HKT,\n')
-process.stdout.write("} from './types'\n\n")
+process.stdout.write("} from '@yafu/fantasy-types'\n\n")
 
 process.stdout.write("type CallHKT<F extends HKT, I> = (F & { input: I })['output']\n\n")
 

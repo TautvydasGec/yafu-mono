@@ -6,13 +6,6 @@ const setups = [ 'production', 'development' ]
 
 export default [
   {
-    input: './lib/definitions.js',
-    output: {
-      file: 'dist/cjs/definitions.js',
-      format: 'cjs',
-    },
-  },
-  {
     input: './dist/ts/fantasy-functions.ts',
     plugins: [ typescript() ],
     output: {
