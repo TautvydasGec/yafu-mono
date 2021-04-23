@@ -1,4 +1,4 @@
-import { curry, flip } from 'yafu'
+import { flip } from 'yafu'
 import { map } from '@yafu/fantasy-functions'
 import { constOf } from '@yafu/const'
 
@@ -10,4 +10,4 @@ function lens (getter, setter, createFunctor, target) {
   return map(flip(setter, target), functor)
 }
 
-export default curry(lens)
+export default lens

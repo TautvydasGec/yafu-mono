@@ -1,4 +1,3 @@
-import { curry } from 'yafu'
 import { extract } from '@yafu/fantasy-functions'
 import { identityOf } from '@yafu/identity'
 import { constOf } from '@yafu/const'
@@ -13,4 +12,4 @@ function over (lens, f, target) {
   return extract(functor)
 }
 
-export default curry(over)
+export default over
