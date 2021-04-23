@@ -4,11 +4,22 @@
   "description": "TypeScript defenitions of fantasy-land types",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "main": "types.ts",
-  "publishConfig": {
-    "access": "public"
+  "main": "./dist/types.d.ts",
+  "type": "module",
+  "exports": {
+    ".": "./dist/types.d.ts",
+    "./definitions": "./lib/definitions.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "pretranspile": "mkdir -p dist",
+    "transpile": "node scripts/tsgen.js > dist/types.d.ts",
+    "prepublishOnly": "yarn clean && yarn transpile"
   },
   "dependencies": {
     "fantasy-land": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
