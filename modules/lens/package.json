@@ -21,6 +21,7 @@
   "dependencies": {
     "@yafu/const": "^1.0.4",
     "@yafu/fantasy-functions": "^1.0.4",
+    "@yafu/fantasy-types": "^0.0.0",
     "@yafu/identity": "^1.0.4",
     "yafu": "^1.1.1"
   },
