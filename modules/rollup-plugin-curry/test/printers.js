@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import curryPrint from '../lib/curry-print'
+import curryPrint from '../lib/curry-print.js'
 
 const { equal } = assert
 it('printUnary', () => {

@@ -1,7 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { parse, print } from 'recast'
-import traverse from '@babel/traverse'
-import {
+import babelTraverse from '@babel/traverse'
+import babelTypes from '@babel/types'
+
+const { default: traverse } = babelTraverse
+const {
   callExpression,
   identifier,
   importDeclaration,
@@ -12,7 +15,7 @@ import {
   stringLiteral,
   variableDeclaration,
   variableDeclarator,
-} from '@babel/types'
+} = babelTypes
 
 function createCurryCall (fnName) {
   return callExpression(identifier('curry'), [ identifier(fnName) ])

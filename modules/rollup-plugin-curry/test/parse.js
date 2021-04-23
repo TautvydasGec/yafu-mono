@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import parse, { parseGenerics, parseParameters, parseName } from '../lib/parse'
+import parse, { parseGenerics, parseParameters, parseName } from '../lib/parse.js'
 
 const { equal, deepEqual } = assert
 
@@ -16,7 +16,7 @@ describe('parse', () => {
         { name: 'a', type: 'A' },
         { name: 'b', type: 'string' },
         { name: 'c', type: 'B' },
-      ]
+      ],
     }
     deepEqual(result, expected)
   })
@@ -116,7 +116,7 @@ describe('acceptance tests', () => {
       parameters: [
         { name: 'fn', type: '(a: A) => B' },
         { name: 'list', type: 'A[]' },
-      ]
+      ],
     }
     deepEqual(result, expected)
   })
@@ -130,13 +130,13 @@ describe('acceptance tests', () => {
       type: 'A[]',
       parameters: [
         { name: 'list', type: 'A[]' },
-      ]
+      ],
     }
     deepEqual(result, expected)
   })
 
   it('works', () => {
-   const composeBinary = 'export declare function composeBinary<A, B, C, D>(f: (c: C) => D, g: (a: A, b: B) => C, x: A, y: B): D;'
+    const composeBinary = 'export declare function composeBinary<A, B, C, D>(f: (c: C) => D, g: (a: A, b: B) => C, x: A, y: B): D;'
     const result = parse(composeBinary)
     const expected = {
       name: 'composeBinary',
@@ -147,7 +147,7 @@ describe('acceptance tests', () => {
         { name: 'g', type: '(a: A, b: B) => C' },
         { name: 'x', type: 'A' },
         { name: 'y', type: 'B' },
-      ]
+      ],
     }
     deepEqual(result, expected)
   })

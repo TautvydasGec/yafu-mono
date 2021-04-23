@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import curryCode from '../lib/curry-code'
+import curryCode from '../lib/curry-code.js'
 
 const { equal, isNull } = assert
 

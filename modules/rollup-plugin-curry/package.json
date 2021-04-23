@@ -4,9 +4,14 @@
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
   "main": "dist/plugin.js",
+  "type": "module",
+  "exports": {
+    "import": "./lib/plugin.js",
+    "require": "./dist/plugin.js"
+  },
   "scripts": {
     "clean": "rm -rf dist/",
-    "lint": "eslint lib/ samplecode/",
+    "lint": "eslint lib/ samplecode/ test/",
     "test": "yarn lint && yarn unit",
     "unit": "mocha",
     "transpile": "rollup -c",
