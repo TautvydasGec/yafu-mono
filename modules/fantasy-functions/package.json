@@ -3,7 +3,8 @@
   "version": "1.0.4",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig.magnusson@gmail.com>",
-  "exports": "./dist/ts/fantasy-functions.js",
+  "exports": "./dist/es6/fantasy-functions.js",
+  "main": "./dist/es6/fantasy-functions.js",
   "type": "module",
   "files": [
     "lib",
@@ -17,7 +18,8 @@
     "prepublishOnly": "yarn clean && yarn transpile",
     "test": "yarn lint && yarn unit",
     "tsgen": "mkdir -p dist/ts && node scripts/generate-ts-functions.js > dist/ts/fantasy-functions.ts",
-    "transpile": "node scripts/generate-module.js && yarn tsgen && rollup -c",
+    "tsmove": "mv dist/ts/*.d.ts dist/es6",
+    "transpile": "node scripts/generate-module.js && yarn tsgen && rollup -c && yarn tsmove",
     "unit": "mocha"
   },
   "dependencies": {

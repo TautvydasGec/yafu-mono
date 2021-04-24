@@ -1,15 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve'
+import pkg from './package.json'
+import createRollupConfig from '../../create-rollup-config.js'
 
-export default {
-  input: './index.js',
-  treeshake: {
-    moduleSideEffects: false,
-  },
-  plugins: [
-    resolve(),
-  ],
-  output: {
-    file: 'dist/lens.js',
-    format: 'cjs',
-  },
-}
+export default createRollupConfig('./lib/index.ts', pkg)
