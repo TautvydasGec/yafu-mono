@@ -1,5 +1,5 @@
-import { drop } from '../dist/drop'
-import { isEmpty } from '../dist/is-empty'
+import { drop } from '../dist/drop.js'
+import { isEmpty } from '../dist/is-empty.js'
 
 /**
  * Determines if a value statisfies a list of predicates. Returns `true` unless any predicate

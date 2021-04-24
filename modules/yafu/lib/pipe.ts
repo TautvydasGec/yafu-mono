@@ -1,6 +1,6 @@
-import { callWith } from '../dist/call-with'
-import { flip } from '../dist/flip'
-import { reduce } from '../dist/reduce'
+import { callWith } from '../dist/call-with.js'
+import { flip } from '../dist/flip.js'
+import { reduce } from '../dist/reduce.js'
 
 /**
  * Pass a value through a list of function where the result of each

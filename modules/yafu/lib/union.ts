@@ -1,4 +1,4 @@
-import { uniq } from '../dist/uniq'
+import { uniq } from '../dist/uniq.js'
 
 /**
  * Returns a list of unique values composed of elements from each input list using

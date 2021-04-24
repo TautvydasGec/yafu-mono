@@ -1,4 +1,4 @@
-import { arrayToSet } from '../dist/_arrayToSet'
+import { arrayToSet } from '../dist/_arrayToSet.js'
 
 /**
  * Creates a new list of unique values that are included in the first list but

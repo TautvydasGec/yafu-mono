@@ -1,5 +1,5 @@
-import { I } from '../dist/i'
-import { uniqBy } from '../dist/uniq-by'
+import { I } from '../dist/i.js'
+import { uniqBy } from '../dist/uniq-by.js'
 
 /**
  * Returns a new list without duplicate elements.
