@@ -1,5 +1,5 @@
 import chai from 'chai'
-import * as tests from '../test'
+import * as tests from '../test/index.js'
 
 chai.should()
 

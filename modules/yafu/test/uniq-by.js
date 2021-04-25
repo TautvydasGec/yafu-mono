@@ -1,4 +1,4 @@
-import { I } from '../dist/i'
+import { I } from '../dist/i.js'
 
 export default (uniqBy) => () => {
   it('returns empty list for empty input', () => {
