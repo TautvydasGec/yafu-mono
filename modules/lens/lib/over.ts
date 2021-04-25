@@ -1,17 +1,15 @@
-import { reduce } from '@yafu/fantasy-functions'
-import { K, flip } from 'yafu'
-import { identityOf } from '@yafu/identity'
-import { constOf } from '@yafu/const'
-import { Lens, FoldableFunctor } from './lens'
+import { K, I } from 'yafu'
+import Either, { right, cata, left } from '@yafu/either'
+import { Lens } from './lens'
 
 function over <F, T, U extends F>(lens: Lens<F, T>, f: (a: F) => U, target: T): T {
-  function createOverFunctor (focus: F): FoldableFunctor<F> {
+  function createEither (focus: F): Either<F, F> {
     const newValue = f(focus)
-    return (newValue === focus ? constOf(target) : identityOf(newValue)) as FoldableFunctor<F>
+    return (newValue === focus ? left(focus) : right(newValue))
   }
 
-  const functor = lens(createOverFunctor, target)
-  return reduce(flip(K), target, functor) as T
+  const either = lens(createEither, target)
+  return cata(K(target), I, either)
 }
 
 export default over

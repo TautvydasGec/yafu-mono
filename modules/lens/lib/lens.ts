@@ -1,22 +1,19 @@
 import { flip } from 'yafu'
-import { Functor, Foldable } from '@yafu/fantasy-types'
 import { map } from '@yafu/fantasy-functions'
-import { constOf } from '@yafu/const'
+import Either, { left } from '@yafu/either'
 
-export interface FoldableFunctor<T> extends Functor<T>, Foldable<T> {}
-
-export type Lens<F, T> = (createFunctor: (focus: F) => FoldableFunctor<F>, target: T) => FoldableFunctor<T>
+export type Lens<F, T> = (createEither: (focus: F) => Either<F, F>, target: T) => Either<F, T>
 
 export default function lens <F, T> (
   getter: (target: T) => F,
   setter: (focus: F, target: T) => T,
 ): Lens<F, T> {
-  return (createFunctor: (focus: F) => FoldableFunctor<F>, target: T): FoldableFunctor<T> => {
+  return (createEither: (focus: F) => Either<F, F>, target: T): Either<F, T> => {
     const initialFocus = getter(target)
-    if (initialFocus == null) return constOf(target)
+    if (initialFocus == null) return left(initialFocus)
 
-    const functor = createFunctor(initialFocus)
+    const either = createEither(initialFocus)
     const setOnTarget = flip(setter, target)
-    return map(setOnTarget, functor) as FoldableFunctor<T>
+    return map(setOnTarget, either)
   }
 }
