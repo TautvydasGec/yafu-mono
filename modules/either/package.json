@@ -11,7 +11,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "eslint *.ts",
+    "lint": "eslint lib/*.ts",
     "prepublishOnly": "yarn clean && yarn transpile",
     "test": "yarn lint",
     "transpile": "rollup -c"
