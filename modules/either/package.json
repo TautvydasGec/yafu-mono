@@ -9,6 +9,7 @@
     "import": "./dist/es6/either.js",
     "require": "./dist/cjs/either.js"
   },
+  "type": "module",
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "eslint lib/*.ts",
