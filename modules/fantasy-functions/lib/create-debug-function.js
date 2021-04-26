@@ -1,4 +1,8 @@
 import * as FL from 'fantasy-land'
+// Disabled because lack of support for named exports in eslint The disabling
+// should be removed once support is added but portential errors should be
+// caught by tests anyway.
+// eslint-disable-next-line import/extensions, import/no-unresolved
 import * as definitions from '@yafu/fantasy-types/definitions'
 import { I, composeN } from 'yafu'
 import isSameType from './is-same-type.js'
