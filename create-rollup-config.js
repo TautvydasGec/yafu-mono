@@ -1,4 +1,3 @@
-import resolve from '@rollup/plugin-node-resolve'
 import typescript2 from 'rollup-plugin-typescript2'
 
 export default function createRollupConfig (input, pkg) {
@@ -9,7 +8,6 @@ export default function createRollupConfig (input, pkg) {
       moduleSideEffects: false,
     },
     plugins: [
-      resolve(),
       typescript2(),
     ],
     output: [ {
